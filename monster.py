@@ -25,9 +25,9 @@ def create_updated_data(data, child):
     updated = []
 
     for d in data:
-        #print("****D *****")
-        #pprint(d)
-        #print(child)
+     #   print("****D *****")
+     #   pprint(d)
+     #   print(child)
         if d.get(child) != None:
             updated.append(d[child])
 
@@ -36,24 +36,24 @@ def create_updated_data(data, child):
 def data_has_key(key, data, path):
     for obj in data:
 
-        #print("Checking: " + key + " in " + str(obj) + "\n\n")
+    #    print("Checking: " + key + " in " + str(obj) + "\n\n")
 
         if obj.get(key) == None:
             formattedPath = list_to_path(path) + key
             print("\033[93mLooked everywhere for \033[00m" + "\033[1;94m" + formattedPath + "\033[00m" +"\033[93m but couldn't find him anywhere :(\033[00m")
             optionals.append(formattedPath)
-        else:
-            #print("Found:" + key + " - Run!")
             break
+   #     else:
+  #          print("Found:" + key + " - Run!")
 
 def has_key(dictionary, data, path):
     for k, v in dictionary.iteritems():
 
         data_has_key(k, data, path)
         if type(v) == dict:
-            #print "******************************************************************************************************************************DICT"
-            #print(v) # from attributes
-            #print(k) # from
+ #           print "******************************************************************************************************************************DICT"
+ #           print(v) # from attributes
+ #           print(k) # from
             path.append(k)
             has_key(v, create_updated_data(data, k), path)
             path.remove(k)
@@ -64,11 +64,8 @@ objects = get_data()
 optionals = []
 path = []
 
-pprint("***************************** Data Model ***********************")
-pprint(model)
-
-# pprint("***************************** Data ***********************")
-# pprint(objects)
+#pprint("***************************** Data Model ***********************")
+#pprint(model)
 
 has_key(model, objects, path)
 
